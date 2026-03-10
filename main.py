@@ -21,10 +21,10 @@ class Menu:
         self.fonte = None
         self.tela = tela
         #Imagem do fundo
-        self.bg = pygame.image.load(os.path.join(BASE_DIR, "asset", "MenuBg.png"))
+        self.bg = pygame.image.load("asset/MenuBg.png").convert_alpha()
         self.bg = pygame.transform.scale(self.bg, (LARGURA, ALTURA))
         # Música do menu
-        pygame.mixer.music.load(os.path.join(BASE_DIR, "asset", "Menu.mp3"))
+        pygame.mixer.music.load("asset/Menu.mp3")
         pygame.mixer.music.play(-1)
 
 
@@ -38,26 +38,26 @@ class Menu:
                 sys.exit()
 
         self.tela.blit(self.bg, (0, 0))
-        fonte_titulo = pygame.font.SysFont("papyrus", 70)
+        fonte_titulo = pygame.font.SysFont("times new roman", 65)
         titulo = fonte_titulo.render("MONSTERS RUN", True, (255, 106, 0))
         rect_titulo = titulo.get_rect(center=(LARGURA // 2, ALTURA // 2 - 120))
         self.tela.blit(titulo, rect_titulo)
 
-        self.fonte = pygame.font.SysFont("papyrus", 30)
+        self.fonte = pygame.font.SysFont("times new roman", 25)
         texto1 = self.fonte.render("PARA JOGAR PRESSIONE SPACE", True, (255, 106, 0))
         rect1 = texto1.get_rect(center=(LARGURA // 2, ALTURA // 2 - 35))
         self.tela.blit(texto1, rect1)
 
         # Segundo texto
-        self.fonte = pygame.font.SysFont("papyrus", 30)
+        self.fonte = pygame.font.SysFont("times new roman", 25)
         texto2 = self.fonte.render("DESVIE DOS OBJETOS USANDO AS SETAS", True, (255, 106, 0))
         rect2 = texto2.get_rect(center=(LARGURA // 2, ALTURA // 2 + 35))
         self.tela.blit(texto2, rect2)
 
         # Terceiro texto
-        self.fonte = pygame.font.SysFont("papyrus", 23)
+        self.fonte = pygame.font.SysFont("times new roman", 23)
         texto3 = self.fonte.render("OBJETIVO: NÃO SER ATINGIDO!", True, (255, 106, 0))
-        rect3 = texto3.get_rect(center=(LARGURA // 2, ALTURA // 2 + 52))
+        rect3 = texto3.get_rect(center=(LARGURA // 2, ALTURA // 2 + 60))
         self.tela.blit(texto3, rect3)
         return "menu"
 
@@ -66,11 +66,11 @@ class Game:
     def __init__(self, tela) :
         self.tela = tela
         # Imagem do jogador
-        self.jogador_img = pygame.image.load(os.path.join(BASE_DIR, "asset", "Player1.png"))
-        self.jogador_img = pygame.transform.scale(self.jogador_img, (61, 61))
+        self.jogador_img = pygame.image.load("asset/Player1.png")
+        self.jogador_img = pygame.transform.scale(self.jogador_img, (59, 59))
 
         # Imagem do objeto
-        self.skull_img = pygame.image.load(os.path.join(BASE_DIR, "asset", "Icon.png"))
+        self.skull_img = pygame.image.load("asset/Icon.png")
         self.skull_img = pygame.transform.scale(self.skull_img, (32, 32))
         self.jogador = pygame.Rect(LARGURA // 2 - 25, ALTURA - 80, 50, 50)
         self.skulls = []
@@ -79,12 +79,12 @@ class Game:
         self.tempo_inicio = pygame.time.get_ticks()
 
         # Imagem do fundo do game - Level 1
-        self.bg = pygame.image.load(os.path.join(BASE_DIR, "asset", "Level1Bg.png"))
+        self.bg = pygame.image.load("asset/Level1Bg.png")
         self.bg = pygame.transform.scale(self.bg, (LARGURA, ALTURA))
         self.tempo_inicio = pygame.time.get_ticks()
 
         # Música do Level 1
-        pygame.mixer.music.load(os.path.join(BASE_DIR, "asset", "Level1.mp3"))
+        pygame.mixer.music.load("asset/Level1.mp3")
         pygame.mixer.music.play(-1)
 
     def criar_skull(self): # Objetos do jogo
